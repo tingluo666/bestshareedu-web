@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="form_group">
-              <div class="label">讲师头像:</div>
+              <div class="label">头像:</div>
               <div class="form_ctl upload_ctl">
                 <input type="hidden" v-model="obj.headImgUrl">
                 <div class="preview">
@@ -86,7 +86,7 @@
             </div>
           </div>
           <div class="form_group">
-            <div class="label">讲师头像:</div>
+            <div class="label">头像:</div>
             <div class="form_ctl upload_ctl">
               <input type="hidden" v-model="obj.headImgUrl">
                 <div class="preview">
@@ -113,7 +113,7 @@ import YFooter from '~/components/common/Footer'
 import YSide from '~/components/account/Side'
 import DUpload from '~/components/account/Upload'
 import {getUserInfo} from '~/api/user.js'
-import {updateUserEducationInf} from '~/api/account/user.js'
+import {updateUserInfo} from '~/api/account/user.js'
 import { myHttp } from '~/utils/myhttp.js'
 export default {
   data () {
@@ -162,7 +162,7 @@ export default {
       this.id = this.obj.id;
       console.log(this.obj)
       myHttp.call(this, {
-        method: updateUserEducationInf,
+        method: updateUserInfo,
         params: this.obj,
         confirm: () => {window.location.reload()},
         cancel: () => {window.location.reload()}

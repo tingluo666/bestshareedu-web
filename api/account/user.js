@@ -1,7 +1,15 @@
 import http from '../method.js'
 
+// 修改教学意向
+export const updateLecturerIntention = (params={}) => {
+  return http().post('/user/auth/user/ext/updateLecturerIntention', params)
+}
+// 修改学习意向
+export const updateUserIntention = (params={}) => {
+  return http().post('/user/auth/user/ext/updateUserIntention', params)
+}
 // 修改用户信息
-export const updateUserEducationInf = (params={}) => {
+export const updateUserInfo = (params={}) => {
   return http().post('/user/auth/user/ext/update', params)
 }
 // 获取讲师信息

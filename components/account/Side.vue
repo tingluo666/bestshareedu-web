@@ -11,6 +11,8 @@
     <div class="menu_panel">
       <h3 class="title"><i class="iconfont">&#xe60a;</i>个人资料</h3>
       <ul class="menus">
+        <li :class="{on: type == 'wsjs'}"><router-link :to="{name: 'account-lecture'}">我是教师</router-link></li>
+        <li :class="{on: type == 'wsxs'}"><router-link :to="{name: 'account-student'}">我是学生</router-link></li>
         <li :class="{on: type == 'grxx'}"><router-link :to="{name: 'account'}">个人信息</router-link></li>
         <li :class="{on: type == 'xgmm'}"><router-link :to="{name: 'account-reset'}">修改密码</router-link></li>
         <li :class="{on: type == 'wddd'}"><router-link :to="{name: 'account-order'}">我的订单</router-link></li>
