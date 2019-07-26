@@ -51,8 +51,8 @@
             </div>
             <p class="hellow_text">欢迎来到{{clientData.name}}</p>
             <ul class="btn_box clearfix">
-							<li><nuxt-link :to="{name: 'account'}">我是老师</nuxt-link></li>
-              <li><nuxt-link :to="{name: 'account'}">我是学生</nuxt-link></li>
+							<li><nuxt-link :to="{name: 'account-lecturer'}">我是老师</nuxt-link></li>
+              <li><nuxt-link :to="{name: 'account-student'}">我是学生</nuxt-link></li>
               <li><nuxt-link :to="{name: 'account'}">用户中心</nuxt-link></li>
               <li><nuxt-link :to="{name: 'account-study'}">学习记录</nuxt-link></li>
               <li><nuxt-link :to="{name: 'account-order'}">我的订单</nuxt-link></li>
