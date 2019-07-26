@@ -11,6 +11,7 @@
           <div class="main_cont form" v-if="isLogin">
 						<form action="" @submit="doUpdateLecturerIntention">
 							<div class="form_group">
+								<p class="tip">备注：资料越详细，被选中概率越高哦</p>
 								<div class="label">身份证号:</div>
 								<div class="form_ctl">
 									<input type="text" v-model="obj.idNumber" class="form_input" placeholder="请输入身份证号">
@@ -103,16 +104,16 @@
 									<div class="label">省:</div>
 								</div>
 								<div class="form_ctl">
-								 <select name="public-choice" v-model="obj.provinceId" @change="provinceSelected">
-										<option :value="province.provinceId" v-for="province in provinceList" >{{province.provinceName}}</option>                                    
+								 <select name="public-choice" v-model="obj.province" @change="provinceSelected">
+										<option v-for="province in provinceList" >{{province.provinceName}}</option>                                    
 									</select>
 								</div>
 								<div class="form_ctl">
 										<div class="label">市:</div>
 								</div>
 								<div class="form_ctl">
-									<select name="public-choice" v-model="obj.cityId" @change="citySelected">
-										<option :value="city.cityId" v-for="city in cityList" >{{city.cityName}}</option>                                    
+									<select name="public-choice" v-model="obj.city">
+										<option v-for="city in cityList" >{{city.cityName}}</option>                                    
 									</select>
 								</div>
 							</div>
@@ -123,22 +124,19 @@
 								</div>
 							</div>
 							<div class="form_group">
-								<div class="label">授课年级:</div>
-									<!-- <tr>
-											<td class = "checkbox" v-for="grade in gradeList">
-												<input type="checkbox" :value="grade.value" v-model="grade.checked" />
-												<label :for="grade.value">{{grade.value}}</label>
-											</td>
-									</tr> -->
+							<div class="label">授课年级:</div>
+								<div class = "checkbox" v-for="g in gradeList">
+											<input type="checkbox" :value="g" v-model="grade" />
+											<label :for="g">{{g}}</label>
+								</div>
 							</div>
 							<div class="form_group">
 								<div class="label">授课学科:</div>
-									<!-- <tr>
-										<td class = "checkbox" v-for="subject in subjectList">
-											<input type="checkbox" :value="subject.value" v-model="subject.checked" />
-											<label :for="subject.value">{{subject.value}}</label>
-										</td>
-									</tr> -->
+									<div class = "checkbox" v-for="s in subjectList">
+										<input type="checkbox" :value="s" v-model="subject"/>
+										<label :for="s">{{s}}</label>
+									</div>
+
 							</div>
 							<div class="form_group">
 								<div class="label">教学经验:</div>
@@ -268,21 +266,17 @@
 						</div>
 						<div class="form_group">
 							<div class="label">授课年级:</div>
-								<!-- <tr>
-										<td class = "checkbox" v-for="grade in gradeList">
-											<input type="checkbox" :value="grade.value" v-model="grade.checked" disabled="true"/>
-											<label :for="grade.value">{{grade.value}}</label>
-										</td>
-								</tr> -->
+								<div class = "checkbox" v-for="g in obj.grade">
+									<!-- <input type="checkbox" :value="g" v-model="obj.grade" disabled="true"/> -->
+									<label :for="g">{{g}}</label>
+								</div>
 						</div>
 						<div class="form_group">
 							<div class="label">授课学科:</div>
-								<!-- <tr>
-										<td class = "checkbox" v-for="subject in subjectList">
-											<input type="checkbox" :value="subject.value" v-model="subject.checked" disabled="true"/>
-											<label :for="subject.value">{{subject.value}}</label>
-										</td>
-								</tr> -->
+								<div class = "checkbox" v-for="s in obj.subject">
+									<!-- <input type="checkbox" :value="s" v-model="obj.subject" disabled="true"/> -->
+									<label :for="s">{{s}}</label>
+								</div>
 						</div>
 						<div class="form_group">
 							<div class="label">教学经验:</div>
@@ -328,8 +322,6 @@ export default {
 			expVal: '',
 			awardVal: '',
 			achVal: '',
-			provinceId: '000000',
-			cityId: '000000',
       obj: {
 				id:'',
         idNumber: '',
@@ -348,8 +340,9 @@ export default {
 				achievement: '',
         province: '',
         city: '',
-				gradeList:[],
-				subjectList:[]
+				address:'',
+				grade:[],
+				subject:[]
       },
 			educationList:[
 				{
@@ -373,36 +366,37 @@ export default {
 						name: '博士'
 				},
 			],
-      
 			provinceList:[],
 			cityList:[],
+			grade:[],
 			gradeList:[
-				{checked:false,value:'学前'},
-				{checked:false,value:'小学'},
-				{checked:false,value:'初中'},
-				{checked:false,value:'高中'},
-				{checked:false,value:'大学'},
-				{checked:false,value:'成人'},
-				{checked:false,value:'其他'}
+				"学前",
+				"小学",
+				"初中",
+				"高中",
+				"大学",
+				"成人",
+				"其他"
 			],
+			subject:[],
 			subjectList:[
-				{checked:false,value:'语文'},
-				{checked:false,value:'数学'},
-				{checked:false,value:'奥数自招'},
-				{checked:false,value:'英语'},
-				{checked:false,value:'化学'},
-				{checked:false,value:'物理'},
-				{checked:false,value:'生物'},
-				{checked:false,value:'历史'},
-				{checked:false,value:'地理'},
-				{checked:false,value:'政治'},
-				{checked:false,value:'音乐'},
-				{checked:false,value:'美术'},
-				{checked:false,value:'计算机'},
-				{checked:false,value:'托福'},
-				{checked:false,value:'雅思'},
-				{checked:false,value:'艺术'},
-				{checked:false,value:'其他'}
+				"语文",
+				"数学",
+				"奥数自招",
+				"英语",
+				"化学",
+				"物理",
+				"生物",
+				"历史",
+				"地理",
+				"政治",
+				"音乐",
+				"美术",
+				"计算",
+				"托福",
+				"雅思",
+				"艺术",
+				"其他"
 			]
     }
   },
@@ -411,6 +405,12 @@ export default {
       myHttp.call(this, {
         method: getLecturerIntention
       }).then(res => {
+				if(res.data.grade != null){
+					this.grade = res.data.grade;
+				}
+				if(res.data.subject != null){
+					this.subject = res.data.subject;
+				}
         console.log(res)
         this.obj = res.data || {}
       }).catch(error => {})
@@ -421,13 +421,10 @@ export default {
     doUpdateLecturerIntention (e) {
 			console.log('doUpdateLecturerIntention')
       e.preventDefault();
-      // if (!this.obj.nickname) {
-      //   this.errTip1 = '请输入昵称';
-      //   return false;
-      // } else {
-      //   this.errTip1 = false;
-      // }
-      // this.id = this.obj.id;
+			console.log(this.grade)
+			console.log(this.obj.grade)
+      this.obj.grade = this.grade;
+			this.obj.subject = this.subject;
       console.log(this.obj)
       myHttp.call(this, {
         method: updateLecturerIntention,
@@ -448,40 +445,25 @@ export default {
       })
     },
 		getProvinceList(){
-			
 			myHttp.call(this, {
 				method: getProvinceList,
 				params: {"level":1}
 			}).then(res => {
 				console.log(res)
 				this.provinceList = res.data.regionList
+				if("" != this.obj.province){
+				this.provinceSelected(this.obj.province)
+			}
 			})
 		},
-		provinceSelected(e){
-			console.log(e)
-			console.log(this.obj.provinceId)
-			if(this.obj.provinceId != '000000'){
-					myHttp.call(this, {
-						method: getCityList,
-						params: {"provinceId":this.obj.provinceId,"level":2}
-					}).then(res => {
-						console.log(res)
-						this.cityList = res.data.regionList
-				})
-			}
-		},
-		citySelected(e){
-			console.log(e)
-			console.log(this.obj.cityId)
-			if(this.obj.cityId != '000000'){
-					myHttp.call(this, {
-						method: getCityList,
-						params: {"cityId":this.obj.cityId,"level":2}
-					}).then(res => {
-						console.log(res)
-						this.cityList = res.data.regionList
-				})
-			}
+		provinceSelected(provinceName){
+				myHttp.call(this, {
+					method: getCityList,
+					params: {"provinceName":this.obj.province,"level":2}
+				}).then(res => {
+					console.log(res)
+					this.cityList = res.data.regionList
+			})
 		},
 		expInput(){
         this.expVal = this.obj.experience.length;
