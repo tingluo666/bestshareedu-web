@@ -38,7 +38,6 @@
     </div>
     <div class="icp_num">
       <a href="http://www.roncoo.net/" target="_blank" class="lingke_link">优享教育</a> 提供技术支持
-      <a href="http://www.roncoo.net/" target="_blank" class="lingke_link">优享教育</a> 提供技术支持
       <span v-if="service.icp">&nbsp;|&nbsp;</span>
       <a href="http://www.miitbeian.gov.cn/" target="_blank" class="lingke_link">{{service.icp}}</a>
       <span v-if="service.prn">&nbsp;|&nbsp;</span>
