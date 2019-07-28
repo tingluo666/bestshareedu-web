@@ -195,8 +195,8 @@ export default {
           this.$store.dispatch('GET_USERINFO',store=>{
             this.userInfo = this.$store.state.userInfo;
             console.log(this.userInfo)
-            console.log('llllllll')
-            window.location.href = this.$store.state.temporaryUrl;
+            // console.log('llllllll')
+            // window.location.href = this.$store.state.temporaryUrl;
           });
         } else {
           this.errTip2 = res.data.msg;
