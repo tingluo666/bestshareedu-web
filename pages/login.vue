@@ -77,7 +77,7 @@
         <span v-html="service.copyright"></span>
       </p>
       <p>
-        <a href="http://www.roncoo.net/" class="lingke_link">优享教育云</a> 提供技术支持
+        <a href="http://www.roncoo.net/" class="lingke_link">优享教育</a> 提供技术支持
         <span v-if="service.icp">&nbsp;|&nbsp;</span>
         <a href="http://www.miitbeian.gov.cn/" class="lingke_link" target="_blank">{{service.icp}}</a>
         <span v-if="service.prn">&nbsp;|&nbsp;</span>

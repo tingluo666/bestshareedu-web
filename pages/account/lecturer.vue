@@ -324,22 +324,22 @@ export default {
 			achVal: '',
       obj: {
 				id:'',
-        idNumber: '',
+				idNumber: '',
 				userNo: '',
 				education: '',
 				school: '',
-        positiveIdImgUrl: '',
+				positiveIdImgUrl: '',
 				negativeIdImgUrl: '',
 				diplomaImgUrl:'',
 				studentImgUrl:'',
 				degreeImgUrl:'',
 				tqcImgUrl:'',
 				tqcNumber:'',
-        experience: '',
-        award: '',
+				experience: '',
+				award: '',
 				achievement: '',
-        province: '',
-        city: '',
+				province: '',
+				city: '',
 				address:'',
 				grade:[],
 				subject:[]
@@ -451,7 +451,7 @@ export default {
 			}).then(res => {
 				console.log(res)
 				this.provinceList = res.data.regionList
-				if("" != this.obj.province){
+				if("" != this.obj.province && null != this.obj.province){
 				this.provinceSelected(this.obj.province)
 			}
 			})
